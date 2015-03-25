@@ -15,10 +15,11 @@ sudo killall httprouter
 
 echo "creating haproxy config"
 cat haproxy.cfg > haproxy.conf
+mkdir -p /tmp/routers/
 for i in `seq 1 $1`; do
     ./build/httprouter $i&
-    sudo chmod 777 /tmp/tds/$i
-    echo "    server td$i unix@/tmp/routers/$i maxconn 3" >> haproxy.conf
+    sudo chmod 777 /tmp/routers/$i
+    echo "    server router$i unix@/tmp/routers/$i maxconn 3" >> haproxy.conf
 done
 
 echo "starting haproxy"
