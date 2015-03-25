@@ -8,8 +8,9 @@ set(CMAKE_MODULE_PATH $ {CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/"
 #enable c++ 11
 SET(CMAKE_CXX_FLAGS "-std=c++11 -g -O3 ${CMAKE_CXX_FLAGS}")
 
-#Protocol buffers
-find_package(Protobuf REQUIRED)
+#zeromqness
+find_package(ZMQ REQUIRED)
+include_directories(${ZMQ_INCLUDE_DIRS})
 
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 include_directories(${CMAKE_SOURCE_DIR})
@@ -21,4 +22,4 @@ set(httprouter_sources
 
 add_executable(httprouter ${httprouter_sources})
 
-target_link_libraries(httprouter hiredis)
+target_link_libraries(httprouter hiredis czmq zmq)

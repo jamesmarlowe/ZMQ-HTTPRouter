@@ -4,6 +4,7 @@
 /// \brief respond to http using zmq
 //
 
+#include <ctime>
 #include "czmq.h"
 #include "log.h"
  
@@ -21,7 +22,7 @@ int main (void)
         if (!handle)
             break;          //  Ctrl-C interrupt
         char *request = zstr_recv (router);
-        puts (request);     //  Professional Logging(TM)
+        log("Request", std::time(nullptr););
         free (request);     //  We throw this away
  
         //  Send Hello World response
