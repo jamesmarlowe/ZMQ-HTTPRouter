@@ -19,7 +19,7 @@ mkdir -p /tmp/routers/
 for i in `seq 1 $1`; do
     ./build/httprouter $i&
     sudo chmod 777 /tmp/routers/$i
-    echo "    server router$i unix@/tmp/routers/$i maxconn 3" >> haproxy.conf
+    echo "    server router$i unix@/tmp/routers/$i maxconn 5" >> haproxy.conf
 done
 
 echo "starting haproxy"

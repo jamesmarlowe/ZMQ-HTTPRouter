@@ -43,7 +43,7 @@ make
 Running
 =======
 ```
-./httprouter
+bash restart.sh 50
 ```
 
 
@@ -51,5 +51,5 @@ Testing
 =======
 ```
 curl -X POST -d 'hello' localhost/
-curl localhost/hello
+curl localhost -w "%{http_code}"
 ```
